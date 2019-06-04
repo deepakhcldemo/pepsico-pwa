@@ -1,18 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { palette, size } from 'styled-theme';
-import { Block, StarRating } from '../../../components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { palette, size } from "styled-theme";
+import { Block, StarRating } from "../../../components";
 
 const ItemWrapper = styled.div`
   width: 100%;
   height: auto;
-  background: ${palette('white', 0)};
+  background: ${palette("white", 0)};
   padding: 5px;
 `;
 
 const bgImage = ({ details }) => `url(${details.imgsrc})`;
-const bgColor = ({ details }) => (details.status > 40 ? 'green' : 'orange');
+const bgColor = ({ details }) => (details.status > 40 ? "green" : "orange");
 
 const ImageWrapper = styled.div`
   width: auto;
@@ -30,7 +30,7 @@ const TitleWrapper = styled.div`
   margin: 2px;
   padding: 0px 5px;
   text-align: left;
-  color: ${palette('grayscale', 0)};
+  color: ${palette("grayscale", 0)};
 `;
 
 const CodeWrapper = styled.div`
@@ -38,7 +38,7 @@ const CodeWrapper = styled.div`
   height: auto;
   margin: 2px;
   padding: 0px 5px;
-  font-size: ${size('s12px')};
+  font-size: ${size("s12px")};
   color: #ccc;
   display: flex;
   justify-content: space-between;
@@ -98,25 +98,25 @@ const ItemBox = ({
   return (
     <ItemWrapper>
       <MenuIcon>
-        <i class="fa fa-ellipsis-v" aria-hidden="true" />
+        <i className="fa fa-ellipsis-v" aria-hidden="true" />
       </MenuIcon>
       <ImageWrapper {...props} />
       <QuantityWrapper>
-        <i class="fa fa-heart-o" />
+        <i className="fa fa-heart-o" />
       </QuantityWrapper>
       <TitleWrapper>{props.details.title}</TitleWrapper>
       <CodeWrapper>
         <span
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center'
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center"
           }}
         >
           {props.details.code}
         </span>
         <StatusWrapper {...props}>
-          {props.details.status} {'%'}
+          {props.details.status} {"%"}
         </StatusWrapper>
       </CodeWrapper>
       {rating && (

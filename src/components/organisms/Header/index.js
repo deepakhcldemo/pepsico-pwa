@@ -5,19 +5,10 @@ import { Navbar, Media } from "react-bootstrap";
 import { ToggleButton, Avatar, Block } from "../../../components";
 const LINKS = [
   {
-    name: "HomePage",
+    name: "Home",
     link: "/",
     icon: "fa fa-tachometer",
-    title: "Home Page",
-    style: {
-      marginLeft: "5px"
-    }
-  },
-  {
-    name: "SamplePage",
-    link: "/sample-page",
-    icon: "fa fa-video-camera",
-    title: "Sample Page",
+    title: "Home",
     style: {
       marginLeft: "5px"
     }

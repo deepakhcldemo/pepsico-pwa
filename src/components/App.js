@@ -16,7 +16,7 @@ import theme from "./themes/default";
 
 class App extends Component {
   state = {
-    collapsedStatus: false
+    collapsedStatus: true
   };
   onLeftNavCollapse = () => {
     this.setState({ collapsedStatus: !this.state.collapsedStatus });

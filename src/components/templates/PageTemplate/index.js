@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { size, palette } from 'styled-theme';
-import { Container } from 'react-bootstrap';
-import { Block } from '../../../components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { size, palette } from "styled-theme";
+import { Container } from "react-bootstrap";
+import { Block } from "../../../components";
 
 const Header = styled.header`
   position: fixed;
@@ -13,7 +13,7 @@ const Header = styled.header`
 `;
 const ContentWrapper = styled(Block)`
   position: absolute;
-  height: ${size('height')};
+  height: ${size("height")};
   overflow-y: auto;
   top: 60px;
   margin: auto;
@@ -21,11 +21,11 @@ const ContentWrapper = styled(Block)`
 `;
 
 const RightContent = styled(Block)`
-  background: ${palette('grayscale', 6)};
+  background: ${palette("grayscale", 6)};
   width: auto;
   position: relative;
-  height: ${size('height')};
-  overflow: auto;
+  height: ${size("height")};
+  overflow: hidden;
 `;
 
 const Content = styled.section`
@@ -33,7 +33,7 @@ const Content = styled.section`
   box-sizing: border-box;
   margin: auto;
   padding: 0rem;
-  max-width: ${size('maxWidth')};
+  max-width: ${size("maxWidth")};
 `;
 
 const Footer = styled.footer`

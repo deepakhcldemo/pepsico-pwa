@@ -1,14 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { palette } from 'styled-theme';
-import { ItemBox } from '../../../components';
-import { Row, Col } from 'react-bootstrap';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { palette } from "styled-theme";
+import { ItemBox } from "../../../components";
+import { Row, Col } from "react-bootstrap";
 
 const ItemListWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
+  width: calc(100% - 10px);
+  height: calc(100vh - 180px);
   padding: 5px;
+  margin: 0 5px;
   overflow-y: auto;
   overflow-x: hidden;
 `;
@@ -21,7 +22,7 @@ const ItemList = props => {
     itemClick,
     addToCartClick
   } = props;
-  console.log('props .............. ', props);
+  console.log("props .............. ", props);
   return (
     <ItemListWrapper>
       <Row>
@@ -31,7 +32,7 @@ const ItemList = props => {
             md={4}
             lg={3}
             key={key}
-            style={{ margin: '10px 0px 10px 5px', padding: '5px' }}
+            style={{ margin: "10px 0px 10px 0px", padding: "5px" }}
           >
             <ItemBox
               details={item.itemDetails}

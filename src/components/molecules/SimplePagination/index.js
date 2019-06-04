@@ -5,11 +5,22 @@ import { size, palette } from "styled-theme";
 import { Pagination } from "react-bootstrap";
 
 const SimplePagination = ({ ...props }) => {
+  const {
+    bsPrefix,
+    style,
+    title,
+    onSelectPagination,
+    currentPageNumber
+  } = props;
   return (
-    <Pagination>
-      <Pagination.Prev />
-      <div style={{ width: "100%", textAlign: "center" }}>Floor 1 Shelf 1</div>
-      <Pagination.Next />
+    <Pagination bsPrefix={bsPrefix} style={style}>
+      <Pagination.Prev
+        onClick={() => onSelectPagination(currentPageNumber - 1)}
+      />
+      <div style={{ width: "100%", textAlign: "center" }}>{title}</div>
+      <Pagination.Next
+        onClick={() => onSelectPagination(currentPageNumber + 1)}
+      />
     </Pagination>
   );
 };
