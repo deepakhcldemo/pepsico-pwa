@@ -32,7 +32,7 @@ const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
   margin: auto;
-  padding: 1rem;
+  padding: 0rem;
   max-width: ${size("maxWidth")};
 `;
 
