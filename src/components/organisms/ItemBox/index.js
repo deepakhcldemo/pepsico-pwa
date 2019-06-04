@@ -1,87 +1,124 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { palette } from "styled-theme";
-import { Button, StarRating } from "../../../components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { palette, size } from 'styled-theme';
+import { Block, StarRating } from '../../../components';
 
 const ItemWrapper = styled.div`
   width: 100%;
   height: auto;
-  border: 1px solid #ccc;
+  background: ${palette('white', 0)};
   padding: 5px;
 `;
 
 const bgImage = ({ details }) => `url(${details.imgsrc})`;
+const bgColor = ({ details }) => (details.status > 40 ? 'green' : 'orange');
+
 const ImageWrapper = styled.div`
   width: auto;
   height: 200px;
-  border: 1px solid #ccc;
   margin: 2px;
   text-align: center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: left center;
   background-image: ${bgImage};
 `;
+
 const TitleWrapper = styled.div`
   width: auto;
-  border: 1px solid #ccc;
   margin: 2px;
-  padding: 5px;
+  padding: 0px 5px;
   text-align: left;
-  color: #ccc;
+  color: ${palette('grayscale', 0)};
 `;
-const PriceWrapper = styled.div`
+
+const CodeWrapper = styled.div`
   width: auto;
   height: auto;
-  border: 1px solid #ccc;
   margin: 2px;
-  padding: 5px;
+  padding: 0px 5px;
+  font-size: ${size('s12px')};
   color: #ccc;
   display: flex;
   justify-content: space-between;
 `;
+
 const RatingWrapper = styled.div`
   width: auto;
-  border: 1px solid #ccc;
   padding: 5px;
   margin: 2px;
   text-align: left;
   color: #ccc;
 `;
-const ButtonWrapper = styled(Button)`
-  color: #ccc;
-  position: relative;
-  padding: auto 5px;
+
+const StatusWrapper = styled(Block)`
+  color: #fff;
+  position: absolute;
+  right: 6px;
+  padding: 0 8px;
+  background-color: ${bgColor};
 `;
 
-const ItemBox = ({ palette, rating, reverse, addToCartClick, ...props }) => {
+const MenuIcon = styled.div`
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+  &:hover {
+    background: #ccc;
+  }
+`;
+
+const QuantityWrapper = styled.div`
+  border-radius: 50%;
+  position: absolute;
+  right: 15px;
+  bottom: 30%;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  &:hover {
+    background: #ccc;
+  }
+`;
+
+const ItemBox = ({
+  palette,
+  rating,
+  reverse,
+  transparent,
+  addToCartClick,
+  ...props
+}) => {
   return (
     <ItemWrapper>
+      <MenuIcon>
+        <i class="fa fa-ellipsis-v" aria-hidden="true" />
+      </MenuIcon>
       <ImageWrapper {...props} />
+      <QuantityWrapper>
+        <i class="fa fa-heart-o" />
+      </QuantityWrapper>
       <TitleWrapper>{props.details.title}</TitleWrapper>
-      <PriceWrapper>
+      <CodeWrapper>
         <span
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center"
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
           }}
         >
-          {props.details.currency} {props.details.price}
+          {props.details.code}
         </span>
-        <ButtonWrapper
-          transparent
-          palette={palette ? palette : "grayscale"}
-          reverse={reverse}
-          onClick={e => {
-            addToCartClick(props.details);
-          }}
-        >
-          <i className="fa fa-cart-plus" style={{ paddingRight: "10px" }} /> Add
-          to Cart
-        </ButtonWrapper>
-      </PriceWrapper>
+        <StatusWrapper {...props}>
+          {props.details.status} {'%'}
+        </StatusWrapper>
+      </CodeWrapper>
       {rating && (
         <RatingWrapper>
           <StarRating

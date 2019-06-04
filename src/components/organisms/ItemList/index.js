@@ -1,14 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
-import { palette } from "styled-theme";
-import { ItemBox } from "../../../components";
-import { Row, Col } from "react-bootstrap";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { palette } from 'styled-theme';
+import { ItemBox } from '../../../components';
+import { Row, Col } from 'react-bootstrap';
 
 const ItemListWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  border: 1px solid #ccc;
   padding: 5px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -22,12 +21,18 @@ const ItemList = props => {
     itemClick,
     addToCartClick
   } = props;
-  console.log("props .............. ", props);
+  console.log('props .............. ', props);
   return (
     <ItemListWrapper>
       <Row>
         {itemList.map((item, key) => (
-          <Col xs={12} md={4} lg={3} key={key} style={{ margin: "10px 0px" }}>
+          <Col
+            xs={6}
+            md={4}
+            lg={3}
+            key={key}
+            style={{ margin: '10px 0px 10px 5px', padding: '5px' }}
+          >
             <ItemBox
               details={item.itemDetails}
               rating={item.itemRating}
@@ -58,14 +63,13 @@ ItemList.propTypes = {
       }),
       itemDetails: PropTypes.shape({
         title: PropTypes.string,
-        price: PropTypes.string,
+        code: PropTypes.string,
         desc: PropTypes.string,
-        status: PropTypes.string,
+        status: PropTypes.number,
         quantity: PropTypes.number,
         thumbimgsrc: PropTypes.string,
         imgsrc: PropTypes.string,
-        imggallery: PropTypes.arrayOf(PropTypes.string),
-        currency: PropTypes.string
+        imggallery: PropTypes.arrayOf(PropTypes.string)
       })
     })
   ),

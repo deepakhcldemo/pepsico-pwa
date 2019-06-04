@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
-import { font, palette } from "styled-theme";
-import { ifProp } from "styled-tools";
-import { Button as bButton } from "react-bootstrap";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
+import { font, palette } from 'styled-theme';
+import { ifProp } from 'styled-tools';
+import { Button as bButton } from 'react-bootstrap';
 
 const fontSize = ({ height }) => `${height / 40}rem`;
 
 const backgroundColor = ({ transparent, disabled }) =>
-  transparent ? "transparent" : palette(disabled ? 2 : 1);
+  transparent ? 'transparent' : palette(disabled ? 2 : 1);
 
 const foregroundColor = ({ transparent, disabled }) =>
   transparent ? palette(disabled ? 2 : 1) : palette(0, true);
@@ -22,20 +22,20 @@ const hoverForegroundColor = ({ disabled, transparent }) =>
 
 const styles = css`
   display: inline-flex;
-  font-family: ${font("primary")};
+  font-family: ${font('primary')};
   align-items: center;
   white-space: nowrap;
   font-size: ${fontSize};
-  border: 0.0625em solid ${ifProp("transparent", "currentcolor", "transparent")};
+  border: 0.0625em solid ${ifProp('transparent', 'currentcolor', 'transparent')};
   height: 2.5em;
   justify-content: center;
   text-decoration: none;
-  cursor: ${ifProp("disabled", "default", "pointer")};
+  cursor: ${ifProp('disabled', 'default', 'pointer')};
   appearance: none;
   padding: 0 1em;
   border-radius: 0.125em;
   box-sizing: border-box;
-  pointer-events: ${ifProp("disabled", "none", "auto")};
+  pointer-events: ${ifProp('disabled', 'none', 'auto')};
   transition: background-color 250ms ease-out, color 250ms ease-out,
     border-color 250ms ease-out;
   background-color: ${backgroundColor};
@@ -70,15 +70,34 @@ const StyledButton = styled(bButton)`
 `;
 
 const Button = ({ type, ...props }) => {
-  const { to, href } = props;
+  const { to, href, reverse, transparent } = props;
   if (to) {
-    return <StyledLink {...props} />;
+    return (
+      <StyledLink
+        {...props}
+        reverse={reverse ? reverse : null}
+        transparent={transparent ? transparent : null}
+      />
+    );
   }
   if (href) {
-    return <Anchor {...props} />;
+    return (
+      <Anchor
+        {...props}
+        reverse={reverse ? reverse : null}
+        transparent={transparent ? transparent : null}
+      />
+    );
   }
 
-  return <StyledButton {...props} type={type} />;
+  return (
+    <StyledButton
+      {...props}
+      type={type}
+      reverse={reverse ? reverse : null}
+      transparent={transparent ? transparent : null}
+    />
+  );
 };
 
 Button.propTypes = {
@@ -93,8 +112,8 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  palette: "primary",
-  type: "button",
+  palette: 'primary',
+  type: 'button',
   height: 40
 };
 
