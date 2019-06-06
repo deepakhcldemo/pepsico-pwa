@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
 import styled from 'styled-components';
 
+import ProductDescription from './ProductDescription'
+
 import { StarRating } from "../../../components";
 
 import Lays from "./lays-classic.png";
@@ -31,14 +33,14 @@ const Link = styled.div`
 class ProductDetails extends Component {
 
   render() {
-    console.log(this.props.history)
-   const { productDetails: { img, title, code, count, rating, barcode, remain }} = this.props;
+    console.log(this.props)
+   const { imgsrc, title, code, quantity, rating, status, desc } = this.props.history.location.state.item;
     return (
       <>
       <Link onClick={this.props.history.goBack}><i className="fa fa-angle-left"></i></Link>
       <div className="content">
         <div className="content-items">
-          <img className="content-image" src={img || Lays} alt="chips" />
+          <img className="content-image" src={imgsrc || Lays} alt="chips" />
         </div>
         <div className="content-items">
           <div className="content-details">
@@ -48,7 +50,7 @@ class ProductDetails extends Component {
             </h6>
             <h6>
               <small>
-                <span className="count-set">{count || 200} &nbsp;</span>
+                <span className="count-set">{quantity || 200} &nbsp;</span>
                 <StarRating
                   editing={false}
                   name="rate1"
@@ -60,7 +62,7 @@ class ProductDetails extends Component {
           </div>
           <div className="content-bottom">
             <img
-              src={barcode || Barcode}
+              src={Barcode}
               alt="barcode"
               width="100%"
               height="50"
@@ -70,11 +72,12 @@ class ProductDetails extends Component {
         <div className="content-items">
           <div className="content-bottom">
             <Badge className="border-r" variant="success">
-              {remain || "100%"}
+              {status || "100%"}
             </Badge>
           </div>
         </div>
       </div>
+      <ProductDescription desc={desc}/>
       </>
     );
   }

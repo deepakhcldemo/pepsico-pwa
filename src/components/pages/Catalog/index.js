@@ -48,10 +48,9 @@ class Catalog extends Component {
     currentPageItems: []
   };
   itemClick = item => {
-    console.log("itemClicked.......", item);
     this.setState({ currentItemTitle: item.title });
     if (this.state.filterBy === "shelf") {
-      this.props.history.push("/item-details");
+      this.props.history.push("/item-details", {item});
     }
   };
   addToCartClick = details => {
