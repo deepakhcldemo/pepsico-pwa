@@ -8,12 +8,18 @@ import {
   NotFoundPage,
   PageTemplate,
   Header,
-  Footer,
   CardBox,
   LeftNavigation
 } from "../components";
+import Footer from './pages/footer'
 import theme from "./themes/default";
-
+const links = [
+  {icon: 'fa fa-adjust', name: 'OCCUPANCY'},
+  {icon: 'fa fa-heart', name: 'HEALTY'},
+  {icon: 'fa fa-adjust', name: 'TASTY'},
+  {icon: 'fa fa-star', name: 'FAVORITE'},
+  {icon: 'fa fa-asterisk', name: 'ALL'}
+  ]
 class App extends Component {
   state = {
     collapsedStatus: true
@@ -31,7 +37,7 @@ class App extends Component {
               collapsedStatus={this.state.collapsedStatus}
             />
           }
-          footer={<Footer />}
+          footer={<Footer links={links}/>}
           leftNavigation={
             <LeftNavigation
               collapsedStatus={this.state.collapsedStatus}
