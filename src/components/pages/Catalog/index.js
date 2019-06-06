@@ -50,7 +50,7 @@ class Catalog extends Component {
   itemClick = item => {
     this.setState({ currentItemTitle: item.title });
     if (this.state.filterBy === "shelf") {
-      this.props.history.push("/item-details", {item});
+      this.props.history.push("/item-details", { item });
     }
   };
   addToCartClick = details => {
@@ -79,13 +79,14 @@ class Catalog extends Component {
     details = {
       title: "Lays Barbeque",
       code: "0122100",
-      imgsrc: "assets/images/img0.jpg",
-      desc: "test ",
+      imgsrc: "assets/images/img0.png",
+      desc:
+        "The DORITOS® brand is all about boldness. If you’re up to the challenge, grab a bag of DORITOS® tortilla chips and get ready to make some memories you won’t soon forget. It’s a bold experience in snacking and beyond.",
       status: 100,
       quantity: 100,
       type: "shelf",
-      thumbimgsrc: "assets/images/img0.jpg",
-      imggallery: ["assets/images/img0.jpg", "assets/images/img0.jpg"]
+      thumbimgsrc: "assets/images/img0.png",
+      imggallery: ["assets/images/img0.png", "assets/images/img0.png"]
     };
 
     itemList = [
@@ -96,26 +97,28 @@ class Catalog extends Component {
         itemDetails: {
           title: "Lays Classic",
           code: "0122101",
-          imgsrc: "assets/images/img1.jpg",
-          desc: "test ",
+          imgsrc: "assets/images/img1.png",
+          desc:
+            "Wherever celebrations and good times happen, the LAY'S® brand will be there just as it has been for more than 75 years. With flavors almost as rich as our history, we have a chip or crisp flavor guaranteed to bring a smile on your face.",
           status: 80,
           quantity: 60,
           type: "shelf",
-          thumbimgsrc: "assets/images/img1.jpg",
-          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+          thumbimgsrc: "assets/images/img1.png",
+          imggallery: ["assets/images/img1.png", "assets/images/img1.png"]
         }
       },
       {
         itemDetails: {
-          title: "Lays Barbeque Ham",
+          title: "Stacy",
           code: "0122102",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
+          imgsrc: "assets/images/img2.png",
+          desc:
+            "STACY’S® pita chips and thins, real pita bread twice baked for incredible crunch. ",
           status: 33,
           quantity: 100,
           type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+          thumbimgsrc: "assets/images/img2.png",
+          imggallery: ["assets/images/img2.png", "assets/images/img2.png"]
         }
       },
       {
