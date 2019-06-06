@@ -45,7 +45,7 @@ class Catalog extends Component {
     numItemsPerPage: 6,
     totalItems: [],
     currentItemTitle: "",
-    cuttentPageItems: []
+    currentPageItems: []
   };
   itemClick = item => {
     console.log("itemClicked.......", item);
@@ -62,7 +62,8 @@ class Catalog extends Component {
     console.log(array, page_size, page_number);
     return array.slice(page_number * page_size, (page_number + 1) * page_size);
   };
-  initData = filterby => {
+
+  initData = async (filterby) => {
     let listItem = filterby === "shelf" ? itemList : categoryList;
     this.setState({ currentPageNumber: 1 });
     this.setState({
@@ -70,10 +71,10 @@ class Catalog extends Component {
     });
     let totalPages = Math.ceil(listItem.length / this.state.numItemsPerPage);
     this.setState({ totalPages: totalPages });
-    this.setState({
-      cuttentPageItems: this.paginate(listItem, this.state.numItemsPerPage, 1)
+    await this.setState({
+      currentPageItems: this.paginate(listItem, this.state.numItemsPerPage, 1)
     });
-    this.setState({ currentItemTitle: "" });
+    this.setState({ currentItemTitle: "" });    
   };
   componentDidMount = () => {
     details = {
@@ -377,7 +378,7 @@ class Catalog extends Component {
     if (number > 0 && number <= this.state.totalPages) {
       this.setState({ currentPageNumber: number });
       this.setState({
-        cuttentPageItems: this.paginate(
+        currentPageItems: this.paginate(
           this.state.totalItems,
           this.state.numItemsPerPage,
           number
@@ -388,6 +389,7 @@ class Catalog extends Component {
     }
   };
   render() {
+    console.log('sdf',this.state.currentPageItems.length)
     return (
       <StyledTabs
         defaultActiveKey="floor"
@@ -411,14 +413,18 @@ class Catalog extends Component {
             title={this.state.currentItemTitle}
             totalPages={this.state.totalPages}
           />
-          <ItemList
-            itemList={this.state.cuttentPageItems}
-            btnTransparent={true}
-            btnReverse={false}
-            btnPalette="success"
-            itemClick={this.itemClick}
-            addToCartClick={this.addToCartClick}
-          />
+          {this.state.currentPageItems.length > 0 && 
+            (              
+              <ItemList
+                itemList={this.state.currentPageItems}
+                btnTransparent={true}
+                btnReverse={false}
+                btnPalette="success"
+                itemClick={this.itemClick}
+                addToCartClick={this.addToCartClick}
+              />
+            )
+          }
         </Tab>
         <Tab eventKey="shelf" title="SHELF">
           <StyledSimplePagination
@@ -433,14 +439,18 @@ class Catalog extends Component {
             title={this.state.currentItemTitle}
             totalPages={this.state.totalPages}
           />
-          <ItemList
-            itemList={this.state.cuttentPageItems}
-            btnTransparent={true}
-            btnReverse={false}
-            btnPalette="success"
-            itemClick={this.itemClick}
-            addToCartClick={this.addToCartClick}
-          />
+          {this.state.currentPageItems.length > 0 && 
+            (
+              <ItemList
+              itemList={this.state.currentPageItems}
+              btnTransparent={true}
+              btnReverse={false}
+              btnPalette="success"
+              itemClick={this.itemClick}
+              addToCartClick={this.addToCartClick}
+            />
+            )
+          }
         </Tab>
       </StyledTabs>
     );

@@ -1,19 +1,45 @@
 import React from "react";
+
+import styled from "styled-components";
+import { palette } from "styled-tools";
+
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
+
+const StyledTabs = styled(Tabs)` 
+  .nav,
+  .nav-tabs,
+  .nav-link {    
+    text-align: center;
+    margin-bottom: 4px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0.3rem;
+    :hover {
+      border: 0px solid transparent;
+      border-bottom: 1px solid
+    }
+    &.active {
+      border: 0px solid transparent;
+      border-bottom: 1px solid
+    }
+  }
+`;
 
 function ProductTabs(props) {
   const {tabs} = props  
   return (
-    <Tabs defaultActiveKey={tabs.defaultActiveKey} transition={false}>
-      {props.tabs && tabs.tabs.map((tab,ind) => {
+    <StyledTabs
+      defaultActiveKey={tabs.defaultActiveKey} transition={false}
+      >
+      {tabs && tabs.tabs.map((tab,ind) => {
         return (
           <Tab key={ind} eventKey={tab.title} title={tab.title}>
             <Content content={tab.content} />
           </Tab>
         )
       })}     
-    </Tabs>
+    </StyledTabs>
   );
 }
 function Content(props) {

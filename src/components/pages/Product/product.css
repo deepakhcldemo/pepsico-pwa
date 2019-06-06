@@ -2,10 +2,10 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    padding: 10px;
   }
   .content-items {
-/*     margin: 5px;
- */    padding: 5px;
+    padding: 5px;
     position: relative;
   }
   .content-details {

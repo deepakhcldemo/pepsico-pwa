@@ -8,6 +8,8 @@ import './product.css';
 
 const ProductBlock = styled.div`
   background-color: #fff;
+  overflow: auto;
+  height: calc(100vh - 115px);
 `;
 function Product(props) {
   const {product:{tabs,productDetails}} = props
@@ -15,7 +17,7 @@ function Product(props) {
     <ProductBlock>
       <ProductDetails productDetails={productDetails}/>
       <ProductDescription desc={productDetails.desc}/>
-      <ProductTabs tabs={tabs}/>
+      <ProductTabs tabs={tabs}/>      
     </ProductBlock>
   );
 }
