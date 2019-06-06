@@ -24,7 +24,11 @@ const TopNavigation = styled(Block)`
   flex-grow: 1;
   color: ${palette("white", 0)} !important;
 `;
-
+const Icon = styled.i`
+  color: #fff;
+  position: relative;
+  right: 5vw;
+`;
 class Header extends Component {
   render() {
     const { ...props } = this.props;
@@ -87,7 +91,8 @@ class Header extends Component {
             <Button variant="outline-success">Search</Button>
           </Form>
         </Navbar.Collapse> */}
-        <TopNavigation>SMART SHELF</TopNavigation>
+        <TopNavigation>SMART SHELF </TopNavigation>
+        <Icon className="fa fa-search"></Icon>
         <Avatar navOptions={LINKS} />
       </NavBarWrapper>
     );

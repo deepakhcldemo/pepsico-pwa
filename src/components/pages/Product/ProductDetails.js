@@ -35,6 +35,7 @@ class ProductDetails extends Component {
   render() {
     console.log(this.props)
    const { imgsrc, title, code, quantity, rating, status, desc } = this.props.history.location.state.item;
+   const color = (status < 50 && status > 30) ? 'warning' : (status > 50) ? 'success' : 'danger'
     return (
       <>
       <Link onClick={this.props.history.goBack}><i className="fa fa-angle-left"></i></Link>
@@ -71,7 +72,7 @@ class ProductDetails extends Component {
         </div>
         <div className="content-items">
           <div className="content-bottom">
-            <Badge className="border-r" variant="success">
+            <Badge className="border-r" variant={color}>
               {status || "100%"}
             </Badge>
           </div>
