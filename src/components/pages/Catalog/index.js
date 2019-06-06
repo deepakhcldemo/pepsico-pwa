@@ -34,13 +34,15 @@ const StyledSimplePagination = styled(SimplePagination)`
     background-color: red;
   }
 `;
-
+let details = {};
+let itemList = [];
+let categoryList = [];
 class Catalog extends Component {
   state = {
     filterBy: "floor",
     currentPageNumber: 1,
     totalPages: 1,
-    numItemsPerPage: 5,
+    numItemsPerPage: 6,
     totalItems: [],
     currentItemTitle: "",
     cuttentPageItems: []
@@ -48,6 +50,9 @@ class Catalog extends Component {
   itemClick = item => {
     console.log("itemClicked.......", item);
     this.setState({ currentItemTitle: item.title });
+    if (this.state.filterBy === "shelf") {
+      this.props.history.push("/item-details");
+    }
   };
   addToCartClick = details => {
     console.log("addToCartClicked.......", details);
@@ -57,20 +62,33 @@ class Catalog extends Component {
     console.log(array, page_size, page_number);
     return array.slice(page_number * page_size, (page_number + 1) * page_size);
   };
-
+  initData = filterby => {
+    let listItem = filterby === "shelf" ? itemList : categoryList;
+    this.setState({ currentPageNumber: 1 });
+    this.setState({
+      totalItems: listItem
+    });
+    let totalPages = Math.ceil(listItem.length / this.state.numItemsPerPage);
+    this.setState({ totalPages: totalPages });
+    this.setState({
+      cuttentPageItems: this.paginate(listItem, this.state.numItemsPerPage, 1)
+    });
+    this.setState({ currentItemTitle: "" });
+  };
   componentDidMount = () => {
-    const details = {
+    details = {
       title: "Lays Barbeque",
       code: "0122101",
       imgsrc: "assets/images/img0.jpg",
       desc: "test ",
       status: 100,
       quantity: 100,
+      type: "shelf",
       thumbimgsrc: "assets/images/img0.jpg",
       imggallery: ["assets/images/img0.jpg", "assets/images/img0.jpg"]
     };
 
-    const itemList = [
+    itemList = [
       {
         itemDetails: details
       },
@@ -82,6 +100,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 80,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
         }
@@ -94,6 +113,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 33,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
@@ -106,6 +126,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 80,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
         }
@@ -118,6 +139,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 33,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
@@ -130,6 +152,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 80,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
         }
@@ -142,6 +165,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 33,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
@@ -154,6 +178,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 80,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
         }
@@ -166,6 +191,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 33,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
@@ -178,6 +204,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 80,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
         }
@@ -190,6 +217,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 33,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
@@ -202,6 +230,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 80,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
         }
@@ -214,6 +243,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 33,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
@@ -226,6 +256,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 80,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
         }
@@ -238,6 +269,7 @@ class Catalog extends Component {
           desc: "test ",
           status: 33,
           quantity: 100,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
@@ -250,24 +282,213 @@ class Catalog extends Component {
           desc: "test ",
           status: 50,
           quantity: 80,
+          type: "shelf",
           thumbimgsrc: "assets/images/img2.jpg",
           imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
         }
       }
     ];
-    this.setState({ totalItems: itemList });
-    let totalPages = Math.ceil(itemList.length / this.state.numItemsPerPage);
-    this.setState({ totalPages: totalPages });
-    this.setState({
-      cuttentPageItems: this.paginate(
-        itemList,
-        this.state.numItemsPerPage,
-        this.state.currentPageNumber
-      )
-    });
-    this.setState({ currentItemTitle: "" });
-    console.log(".................>>> ", this.state.cuttentPageItems);
+
+    categoryList = [
+      {
+        itemDetails: {
+          title: "Lays Classic",
+          code: "0122101",
+          imgsrc: "assets/images/img1.jpg",
+          desc: "test ",
+          status: 80,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img1.jpg",
+          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 33,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Classic",
+          code: "0122101",
+          imgsrc: "assets/images/img1.jpg",
+          desc: "test ",
+          status: 80,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img1.jpg",
+          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 33,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Classic",
+          code: "0122101",
+          imgsrc: "assets/images/img1.jpg",
+          desc: "test ",
+          status: 80,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img1.jpg",
+          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 33,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Classic",
+          code: "0122101",
+          imgsrc: "assets/images/img1.jpg",
+          desc: "test ",
+          status: 80,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img1.jpg",
+          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 33,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Classic",
+          code: "0122101",
+          imgsrc: "assets/images/img1.jpg",
+          desc: "test ",
+          status: 80,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img1.jpg",
+          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 33,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Classic",
+          code: "0122101",
+          imgsrc: "assets/images/img1.jpg",
+          desc: "test ",
+          status: 80,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img1.jpg",
+          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 33,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Classic",
+          code: "0122101",
+          imgsrc: "assets/images/img1.jpg",
+          desc: "test ",
+          status: 80,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img1.jpg",
+          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 33,
+          quantity: 100,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Lays Barbeque Ham new",
+          code: "0122101",
+          imgsrc: "assets/images/img2.jpg",
+          desc: "test ",
+          status: 50,
+          quantity: 80,
+          type: "floor",
+          thumbimgsrc: "assets/images/img2.jpg",
+          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+        }
+      }
+    ];
+    this.initData("floor");
   };
+
   onSelectPagination = number => {
     console.log("..................... ", number);
     if (number > 0 && number <= this.state.totalPages) {
@@ -291,20 +512,21 @@ class Catalog extends Component {
         onSelect={(index, label) => {
           this.setState({ filterBy: index });
           console.log(index, " : ", label + " selected");
+          this.initData(index);
         }}
       >
         <Tab eventKey="floor" title="FLOOR">
           <SimplePagination
             style={{
               backgroundColor: "#e0e0e0",
-              paddingLeft: "15px",
-              paddingRight: "15px",
+              padding: "10px 15px",
               marginBottom: 0
             }}
             onSelectPagination={this.onSelectPagination}
             currentPageNumber={this.state.currentPageNumber}
             items={this.state.totalPages}
             title={this.state.currentItemTitle}
+            totalPages={this.state.totalPages}
           />
           <ItemList
             itemList={this.state.cuttentPageItems}
@@ -319,14 +541,14 @@ class Catalog extends Component {
           <StyledSimplePagination
             style={{
               backgroundColor: "#e0e0e0",
-              paddingLeft: "15px",
-              paddingRight: "15px",
+              padding: "10px 15px",
               marginBottom: 0
             }}
             onSelectPagination={this.onSelectPagination}
             currentPageNumber={this.state.currentPageNumber}
             items={this.state.totalPages}
             title={this.state.currentItemTitle}
+            totalPages={this.state.totalPages}
           />
           <ItemList
             itemList={this.state.cuttentPageItems}

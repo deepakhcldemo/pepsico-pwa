@@ -59,6 +59,29 @@ const StatusWrapper = styled(Block)`
   padding: 0 8px;
   background-color: ${bgColor};
 `;
+const CatStatusWrapper = styled(Block)`
+  color: #fff;
+  position: relative;
+  padding: 0 8px;
+  background-color: ${bgColor};
+  float: left;
+  text-align: right;
+  width: 54px;
+`;
+const CatProgressWrapper = styled(Block)`
+  color: #fff;
+  position: absolute;
+  top: 0;
+  margin-left: 25%;
+  width: 108px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 1px 1px 0 #cfcfcf;
+  @media screen and (max-width: 400px) {
+    margin-left: 10%;
+  }
+`;
 
 const MenuIcon = styled.div`
   height: 25px;
@@ -86,6 +109,13 @@ const QuantityWrapper = styled.div`
     background: #ccc;
   }
 `;
+const CatQuantityWrapper = styled.div`
+  position: absolute;
+  width: 50px;
+  text-align: center;
+  left: 54px;
+  color: #000;
+`;
 
 const ItemBox = ({
   palette,
@@ -100,10 +130,19 @@ const ItemBox = ({
       <MenuIcon>
         <i className="fa fa-ellipsis-v" aria-hidden="true" />
       </MenuIcon>
-      <ImageWrapper {...props} />
-      <QuantityWrapper>
-        <i className="fa fa-heart-o" />
-      </QuantityWrapper>
+      <ImageWrapper
+        {...props}
+        style={
+          props.details.type === "floor"
+            ? { backgroundPosition: "center center" }
+            : { backgroundPosition: "left center" }
+        }
+      />
+      {props.details.type === "shelf" && (
+        <QuantityWrapper>
+          <i className="fa fa-heart-o" />
+        </QuantityWrapper>
+      )}
       <TitleWrapper>{props.details.title}</TitleWrapper>
       <CodeWrapper>
         <span
@@ -115,9 +154,19 @@ const ItemBox = ({
         >
           {props.details.code}
         </span>
-        <StatusWrapper {...props}>
-          {props.details.status} {"%"}
-        </StatusWrapper>
+        {props.details.type === "shelf" && (
+          <StatusWrapper {...props}>
+            {props.details.status} {"%"}
+          </StatusWrapper>
+        )}
+        {props.details.type === "floor" && (
+          <CatProgressWrapper {...props}>
+            <CatStatusWrapper {...props}>
+              {props.details.status} {"%"}
+            </CatStatusWrapper>
+            <CatQuantityWrapper>34</CatQuantityWrapper>
+          </CatProgressWrapper>
+        )}
       </CodeWrapper>
       {rating && (
         <RatingWrapper>

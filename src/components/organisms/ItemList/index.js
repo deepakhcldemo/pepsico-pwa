@@ -7,7 +7,7 @@ import { Row, Col } from "react-bootstrap";
 
 const ItemListWrapper = styled.div`
   width: calc(100% - 10px);
-  height: calc(100vh - 180px);
+  height: calc(100vh - 200px);
   padding: 5px;
   margin: 0 5px;
   overflow-y: auto;

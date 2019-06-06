@@ -22,6 +22,7 @@ const NavBarWrapper = styled(Navbar)`
 const TopNavigation = styled(Block)`
   display: flex;
   flex-grow: 1;
+  color: ${palette("white", 0)} !important;
 `;
 
 class Header extends Component {
@@ -34,7 +35,7 @@ class Header extends Component {
         expand="lg"
         style={{ height: "60px" }}
       >
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home" style={{ marginRight: 0 }}>
           <Media>
             <img
               width={
@@ -86,7 +87,7 @@ class Header extends Component {
             <Button variant="outline-success">Search</Button>
           </Form>
         </Navbar.Collapse> */}
-        <TopNavigation />
+        <TopNavigation>SMART SHELF</TopNavigation>
         <Avatar navOptions={LINKS} />
       </NavBarWrapper>
     );
