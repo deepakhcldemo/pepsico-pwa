@@ -140,7 +140,7 @@ const ItemBox = ({
       />
       {props.details.type === "shelf" && (
         <QuantityWrapper>
-          <i className="fa fa-heart-o" />
+          <i className="fa fa-heart-o" style={{ color: "#CCC" }} />
           <span
             style={{
               fontSize: "12px",
@@ -148,7 +148,9 @@ const ItemBox = ({
               top: "12px",
               left: "4px",
               width: "20px",
-              textAlign: "center"
+              textAlign: "center",
+              color: "#8B0000",
+              fontWeight: "bold"
             }}
           >
             {props.details.quantity}
