@@ -9,6 +9,7 @@ const ItemWrapper = styled.div`
   height: auto;
   background: ${palette("white", 0)};
   padding: 5px;
+  cursor: pointer;
 `;
 
 const bgImage = ({ details }) => `url(${details.imgsrc})`;

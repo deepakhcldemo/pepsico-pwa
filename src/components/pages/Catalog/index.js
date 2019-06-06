@@ -42,7 +42,7 @@ class Catalog extends Component {
     filterBy: "floor",
     currentPageNumber: 1,
     totalPages: 1,
-    numItemsPerPage: 6,
+    numItemsPerPage: 8,
     totalItems: [],
     currentItemTitle: "",
     currentPageItems: []
