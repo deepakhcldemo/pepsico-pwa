@@ -63,7 +63,7 @@ class Catalog extends Component {
     return array.slice(page_number * page_size, (page_number + 1) * page_size);
   };
 
-  initData = async (filterby) => {
+  initData = async filterby => {
     let listItem = filterby === "shelf" ? itemList : categoryList;
     this.setState({ currentPageNumber: 1 });
     this.setState({
@@ -74,12 +74,12 @@ class Catalog extends Component {
     await this.setState({
       currentPageItems: this.paginate(listItem, this.state.numItemsPerPage, 1)
     });
-    this.setState({ currentItemTitle: "" });    
+    this.setState({ currentItemTitle: "" });
   };
   componentDidMount = () => {
     details = {
       title: "Lays Barbeque",
-      code: "0122101",
+      code: "0122100",
       imgsrc: "assets/images/img0.jpg",
       desc: "test ",
       status: 100,
@@ -100,7 +100,7 @@ class Catalog extends Component {
           imgsrc: "assets/images/img1.jpg",
           desc: "test ",
           status: 80,
-          quantity: 100,
+          quantity: 60,
           type: "shelf",
           thumbimgsrc: "assets/images/img1.jpg",
           imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
@@ -109,7 +109,7 @@ class Catalog extends Component {
       {
         itemDetails: {
           title: "Lays Barbeque Ham",
-          code: "0122101",
+          code: "0122102",
           imgsrc: "assets/images/img2.jpg",
           desc: "test ",
           status: 33,
@@ -121,171 +121,182 @@ class Catalog extends Component {
       },
       {
         itemDetails: {
-          title: "Lays Classic",
-          code: "0122101",
-          imgsrc: "assets/images/img1.jpg",
+          title: "Off The Eaten Path",
+          code: "0122103",
+          imgsrc: "assets/images/img3.png",
           desc: "test ",
           status: 80,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img1.jpg",
-          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Barbeque Ham",
-          code: "0122101",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
-          status: 33,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Classic",
-          code: "0122101",
-          imgsrc: "assets/images/img1.jpg",
-          desc: "test ",
-          status: 80,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img1.jpg",
-          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Barbeque Ham",
-          code: "0122101",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
-          status: 33,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Classic",
-          code: "0122101",
-          imgsrc: "assets/images/img1.jpg",
-          desc: "test ",
-          status: 80,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img1.jpg",
-          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Barbeque Ham",
-          code: "0122101",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
-          status: 33,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Classic",
-          code: "0122101",
-          imgsrc: "assets/images/img1.jpg",
-          desc: "test ",
-          status: 80,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img1.jpg",
-          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Barbeque Ham",
-          code: "0122101",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
-          status: 33,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Classic",
-          code: "0122101",
-          imgsrc: "assets/images/img1.jpg",
-          desc: "test ",
-          status: 80,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img1.jpg",
-          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Barbeque Ham",
-          code: "0122101",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
-          status: 33,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Classic",
-          code: "0122101",
-          imgsrc: "assets/images/img1.jpg",
-          desc: "test ",
-          status: 80,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img1.jpg",
-          imggallery: ["assets/images/img1.jpg", "assets/images/img1.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Barbeque Ham",
-          code: "0122101",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
-          status: 33,
-          quantity: 100,
-          type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
-        }
-      },
-      {
-        itemDetails: {
-          title: "Lays Barbeque Ham new",
-          code: "0122101",
-          imgsrc: "assets/images/img2.jpg",
-          desc: "test ",
-          status: 50,
           quantity: 80,
           type: "shelf",
-          thumbimgsrc: "assets/images/img2.jpg",
-          imggallery: ["assets/images/img2.jpg", "assets/images/img2.jpg"]
+          thumbimgsrc: "assets/images/img3.png",
+          imggallery: ["assets/images/img3.png", "assets/images/img3.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Pepsi",
+          code: "0122104",
+          imgsrc: "assets/images/img4.png",
+          desc: "Delicious. Refreshing. Pepsi",
+          status: 33,
+          quantity: 20,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img4.png",
+          imggallery: ["assets/images/img4.png", "assets/images/img4.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Mirinda",
+          code: "0122105",
+          imgsrc: "assets/images/img5.png",
+          desc:
+            "Mirinda is a fun brand that captures love for fruity flavors through vibrant, delicious fruity offerings. With over 44+ flavors globally, Mirinda is a billion dollar PepsiCo brand with presence in over 100 countries.",
+          status: 80,
+          quantity: 90,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img5.png",
+          imggallery: ["assets/images/img5.png", "assets/images/img5.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Diet Mountain Dew",
+          code: "0122106",
+          imgsrc: "assets/images/img6.png",
+          desc:
+            "All the great, exhilarating taste of MTN DEW with zero calories.",
+          status: 70,
+          quantity: 90,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img6.png",
+          imggallery: ["assets/images/img6.png", "assets/images/img6.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Pure Leaf",
+          code: "0122107",
+          imgsrc: "assets/images/img7.png",
+          desc:
+            "Pure Leaf brews premium iced tea from real tea leaves and follows a simple and authentic  process that comes from a passion for realness.",
+          status: 20,
+          quantity: 40,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img7.png",
+          imggallery: ["assets/images/img7.png", "assets/images/img7.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Ruffles",
+          code: "0122108",
+          imgsrc: "assets/images/img8.png",
+          desc:
+            "With crunchy ridges and epic inspired flavors, RUFFLES® potato chips bring snack satisfaction and big taste to any moment.",
+          status: 43,
+          quantity: 72,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img8.png",
+          imggallery: ["assets/images/img8.png", "assets/images/img8.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Sabra",
+          code: "0122109",
+          imgsrc: "assets/images/img9.png",
+          desc:
+            "Sabra makes America’s favorite hummus in more than a dozen delicious varieties. All of Sabra’s products are made with fresh ingredients you can feel good about, including plant-based foods that are non-GMO, vegan, gluten-free, kosher, and organic.",
+          status: 25,
+          quantity: 50,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img9.png",
+          imggallery: ["assets/images/img9.png", "assets/images/img9.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Smartfood Delight",
+          code: "0122110",
+          imgsrc: "assets/images/img10.png",
+          desc:
+            "As America’s favorite popcorn brand, our fresh-tasting, light-textured SMARTFOOD DELIGHT® varieties always seem to keep the fun popping with only 35 calories per cup. In our book, being smart is always in great taste.",
+          status: 50,
+          quantity: 100,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img10.png",
+          imggallery: ["assets/images/img10.png", "assets/images/img10.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Quaker",
+          code: "0122111",
+          imgsrc: "assets/images/img11.png",
+          desc:
+            "For more than 140 years, Quaker has been the leading expert in oats, combining science, scale, passion, and expertise, and dedicated to determining ways to transform the oat into products that help people benefit from their goodness.",
+          status: 100,
+          quantity: 30,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img11.png",
+          imggallery: ["assets/images/img11.png", "assets/images/img11.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Tostitos",
+          code: "0122112",
+          imgsrc: "assets/images/img12.png",
+          desc:
+            "TOSTITOS® are more than tortilla chips and dips – they’re an invitation to catch up with friends, so Get Together Already™!",
+          status: 33,
+          quantity: 60,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img12.png",
+          imggallery: ["assets/images/img12.png", "assets/images/img12.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Funyuns",
+          code: "0122113",
+          imgsrc: "assets/images/img13.png",
+          desc:
+            "FUNYUNS® Onion Flavored Rings are a deliciously different snack that’s fun to eat, with a crisp texture and zesty onion flavor. Next time you're in the mood for a tasty treat that's out of the ordinary, try FUNYUNS® Onion Flavored Rings.",
+          status: 80,
+          quantity: 80,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img13.png",
+          imggallery: ["assets/images/img13.png", "assets/images/img13.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Fritos",
+          code: "0122114",
+          imgsrc: "assets/images/img14.png",
+          desc:
+            "The popularity of FRITOS® corn chips puts this iconic snack in a class of its own. From small towns and family barbecues to parties in the big city, this classic snack is still satisfying fans after more than 80 years.",
+          status: 90,
+          quantity: 70,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img14.png",
+          imggallery: ["assets/images/img14.png", "assets/images/img14.png"]
+        }
+      },
+      {
+        itemDetails: {
+          title: "Starbucks",
+          code: "0122115",
+          imgsrc: "assets/images/img15.png",
+          desc:
+            "More than twenty years ago, Starbucks and PepsiCo started the North America Coffee Partnership and launched Starbucks Bottled Frappuccino chilled coffee drink. What started out as a nascent category has grown to be more than 40 ready-to-drink Starbucks beverages and more than $2 billion in retail business.",
+          status: 10,
+          quantity: 80,
+          type: "shelf",
+          thumbimgsrc: "assets/images/img15.png",
+          imggallery: ["assets/images/img14.png", "assets/images/img15.png"]
         }
       }
     ];
@@ -311,7 +322,7 @@ class Catalog extends Component {
           imgsrc: "assets/images/cat2.png",
           desc: "test ",
           status: 33,
-          quantity: 100,
+          quantity: 60,
           type: "floor",
           thumbimgsrc: "assets/images/cat2.png",
           imggallery: ["assets/images/cat2.png", "assets/images/cat2.png"]
@@ -324,7 +335,7 @@ class Catalog extends Component {
           imgsrc: "assets/images/cat3.png",
           desc: "test ",
           status: 80,
-          quantity: 100,
+          quantity: 66,
           type: "floor",
           thumbimgsrc: "assets/images/cat3.png",
           imggallery: ["assets/images/cat3.png", "assets/images/cat3.png"]
@@ -337,7 +348,7 @@ class Catalog extends Component {
           imgsrc: "assets/images/cat4.png",
           desc: "test ",
           status: 33,
-          quantity: 100,
+          quantity: 57,
           type: "floor",
           thumbimgsrc: "assets/images/cat4.png",
           imggallery: ["assets/images/cat4.png", "assets/images/cat4.png"]
@@ -350,7 +361,7 @@ class Catalog extends Component {
           imgsrc: "assets/images/cat5.png",
           desc: "test ",
           status: 80,
-          quantity: 100,
+          quantity: 12,
           type: "floor",
           thumbimgsrc: "assets/images/cat5.png",
           imggallery: ["assets/images/cat5.png", "assets/images/cat5.png"]
@@ -363,7 +374,7 @@ class Catalog extends Component {
           imgsrc: "assets/images/cat6.png",
           desc: "test ",
           status: 33,
-          quantity: 100,
+          quantity: 99,
           type: "floor",
           thumbimgsrc: "assets/images/cat6.png",
           imggallery: ["assets/images/cat6.png", "assets/images/cat6.png"]
@@ -389,7 +400,7 @@ class Catalog extends Component {
     }
   };
   render() {
-    console.log('sdf',this.state.currentPageItems.length)
+    console.log("sdf", this.state.currentPageItems.length);
     return (
       <StyledTabs
         defaultActiveKey="floor"
@@ -413,18 +424,16 @@ class Catalog extends Component {
             title={this.state.currentItemTitle}
             totalPages={this.state.totalPages}
           />
-          {this.state.currentPageItems.length > 0 && 
-            (              
-              <ItemList
-                itemList={this.state.currentPageItems}
-                btnTransparent={true}
-                btnReverse={false}
-                btnPalette="success"
-                itemClick={this.itemClick}
-                addToCartClick={this.addToCartClick}
-              />
-            )
-          }
+          {this.state.currentPageItems.length > 0 && (
+            <ItemList
+              itemList={this.state.currentPageItems}
+              btnTransparent={true}
+              btnReverse={false}
+              btnPalette="success"
+              itemClick={this.itemClick}
+              addToCartClick={this.addToCartClick}
+            />
+          )}
         </Tab>
         <Tab eventKey="shelf" title="SHELF">
           <StyledSimplePagination
@@ -439,9 +448,8 @@ class Catalog extends Component {
             title={this.state.currentItemTitle}
             totalPages={this.state.totalPages}
           />
-          {this.state.currentPageItems.length > 0 && 
-            (
-              <ItemList
+          {this.state.currentPageItems.length > 0 && (
+            <ItemList
               itemList={this.state.currentPageItems}
               btnTransparent={true}
               btnReverse={false}
@@ -449,8 +457,7 @@ class Catalog extends Component {
               itemClick={this.itemClick}
               addToCartClick={this.addToCartClick}
             />
-            )
-          }
+          )}
         </Tab>
       </StyledTabs>
     );

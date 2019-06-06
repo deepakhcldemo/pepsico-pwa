@@ -141,6 +141,18 @@ const ItemBox = ({
       {props.details.type === "shelf" && (
         <QuantityWrapper>
           <i className="fa fa-heart-o" />
+          <span
+            style={{
+              fontSize: "12px",
+              position: "absolute",
+              top: "12px",
+              left: "4px",
+              width: "20px",
+              textAlign: "center"
+            }}
+          >
+            {props.details.quantity}
+          </span>
         </QuantityWrapper>
       )}
       <TitleWrapper>{props.details.title}</TitleWrapper>
