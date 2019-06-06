@@ -43,6 +43,36 @@
       "type": "image/png"
     },
     {
+      "src": "assets/images/cat1.png",
+      "sizes": "262x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/cat2.png",
+      "sizes": "600x320",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/cat3.png",
+      "sizes": "275x183",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/cat4.png",
+      "sizes": "213x237",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/cat5.png",
+      "sizes": "432x300",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/cat6.png",
+      "sizes": "217x232",
+      "type": "image/png"
+    },
+    {
       "src": "assets/images/img0.jpg",
       "sizes": "366x450",
       "type": "image/jpg"
