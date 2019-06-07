@@ -41,7 +41,7 @@ const ItemList = props => {
               transparent={btnTransparent}
               reverse={btnReverse}
               addToCartClick={addToCartClick}
-              onClick={e => {
+              itemClick={e => {
                 itemClick(item.itemDetails);
               }}
             />

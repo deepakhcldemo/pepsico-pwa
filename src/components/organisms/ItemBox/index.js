@@ -127,7 +127,12 @@ const ItemBox = ({
   ...props
 }) => {
   return (
-    <ItemWrapper>
+    <ItemWrapper
+      style={{
+        opacity: props.details.quantity === 0 ? 0.6 : 1
+      }}
+      onClick={props.itemClick}
+    >
       <MenuIcon>
         <i className="fa fa-ellipsis-v" aria-hidden="true" />
       </MenuIcon>
@@ -154,7 +159,7 @@ const ItemBox = ({
               fontWeight: "bold"
             }}
           >
-            {props.details.quantity}
+            {props.details.quantity > 0 ? props.details.quantity : ""}
           </span>
         </QuantityWrapper>
       )}
@@ -179,7 +184,9 @@ const ItemBox = ({
             <CatStatusWrapper {...props}>
               {props.details.status} {"%"}
             </CatStatusWrapper>
-            <CatQuantityWrapper>34</CatQuantityWrapper>
+            <CatQuantityWrapper>
+              {props.details.quantity > 0 ? props.details.quantity : ""}
+            </CatQuantityWrapper>
           </CatProgressWrapper>
         )}
       </CodeWrapper>
@@ -209,6 +216,7 @@ ItemBox.propTypes = {
     starCount: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired
   }),
+  itemClick: PropTypes.func,
   addToCartClick: PropTypes.func
 };
 export default ItemBox;

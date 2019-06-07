@@ -100,8 +100,8 @@ class Catalog extends Component {
           imgsrc: "assets/images/img1.png",
           desc:
             "Wherever celebrations and good times happen, the LAY'S® brand will be there just as it has been for more than 75 years. With flavors almost as rich as our history, we have a chip or crisp flavor guaranteed to bring a smile on your face.",
-          status: 80,
-          quantity: 60,
+          status: 40,
+          quantity: 80,
           type: "shelf",
           thumbimgsrc: "assets/images/img1.png",
           imggallery: ["assets/images/img1.png", "assets/images/img1.png"]
@@ -114,8 +114,8 @@ class Catalog extends Component {
           imgsrc: "assets/images/img2.png",
           desc:
             "STACY’S® pita chips and thins, real pita bread twice baked for incredible crunch. ",
-          status: 33,
-          quantity: 100,
+          status: 0,
+          quantity: 0,
           type: "shelf",
           thumbimgsrc: "assets/images/img2.png",
           imggallery: ["assets/images/img2.png", "assets/images/img2.png"]
@@ -126,7 +126,8 @@ class Catalog extends Component {
           title: "Off The Eaten Path",
           code: "0122103",
           imgsrc: "assets/images/img3.png",
-          desc: "test ",
+          desc:
+            "Hungry for a new adventure? Try Off the Eaten Path – deliciously different from chips. You’ll discover a new take on Real Veggies like green peas, yellow peas and black beans. Keep feeding your curious!",
           status: 80,
           quantity: 80,
           type: "shelf",

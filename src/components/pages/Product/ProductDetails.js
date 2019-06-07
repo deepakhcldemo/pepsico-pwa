@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Badge from "react-bootstrap/Badge";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import ProductDescription from './ProductDescription'
+import ProductDescription from "./ProductDescription";
 
 import { StarRating } from "../../../components";
 
@@ -12,7 +12,7 @@ import Barcode from "./barcode.png";
 
 const Link = styled.div`
   background-color: #fff;
-  z-index:999;
+  z-index: 999;
   box-shadow: 1px 1px 1px 1px #dcd8d8;
   position: relative;
   top: 5px;
@@ -31,54 +31,65 @@ const Link = styled.div`
   font-weight: bolder;
 `;
 class ProductDetails extends Component {
-
   render() {
-    console.log(this.props)
-   const { imgsrc, title, code, quantity, rating, status, desc } = this.props.history.location.state.item;
-   const color = (status < 50 && status > 30) ? 'warning' : (status > 50) ? 'success' : 'danger'
+    console.log(this.props);
+    const {
+      imgsrc,
+      title,
+      code,
+      quantity,
+      rating,
+      status,
+      desc
+    } = this.props.history.location.state.item;
+    const color =
+      status < 50 && status > 30
+        ? "warning"
+        : status > 50
+        ? "success"
+        : "danger";
     return (
       <>
-      <Link onClick={this.props.history.goBack}><i className="fa fa-angle-left"></i></Link>
-      <div className="content">
-        <div className="content-items">
-          <img className="content-image" src={imgsrc || Lays} alt="chips" />
-        </div>
-        <div className="content-items">
-          <div className="content-details">
-            <h6>{title || "LAY'S - PAPRIKA"}</h6>
-            <h6>
-              <small>{code || "120gr/4.23oz"}</small>
-            </h6>
-            <h6>
-              <small>
-                <span className="count-set">{quantity || 200} &nbsp;</span>
-                <StarRating
-                  editing={false}
-                  name="rate1"
-                  starCount={5}
-                  value={rating || 4}
-                />
-              </small>
-            </h6>
+        <Link onClick={this.props.history.goBack}>
+          <i className="fa fa-angle-left" />
+        </Link>
+        <div className="content">
+          <div className="content-items">
+            <img className="content-image" src={imgsrc || Lays} alt="chips" />
           </div>
-          <div className="content-bottom">
-            <img
-              src={Barcode}
-              alt="barcode"
-              width="100%"
-              height="50"
-            />
+          <div className="content-items">
+            <div className="content-details">
+              <h6>{title || "LAY'S - PAPRIKA"}</h6>
+              <h6>
+                <small>{code || "120gr/4.23oz"}</small>
+              </h6>
+              <h6>
+                <small>
+                  <span className="count-set">
+                    {quantity > 0 ? quantity : 0} &nbsp;
+                  </span>
+                  <StarRating
+                    editing={false}
+                    name="rate1"
+                    starCount={5}
+                    value={rating || 4}
+                  />
+                </small>
+              </h6>
+            </div>
+            <div className="content-bottom">
+              <img src={Barcode} alt="barcode" width="100%" height="50" />
+            </div>
+          </div>
+          <div className="content-items">
+            <div className="content-bottom">
+              <Badge className="border-r" variant={color}>
+                {status > 0 ? status + "%" : "0%"}
+              </Badge>
+            </div>
           </div>
         </div>
-        <div className="content-items">
-          <div className="content-bottom">
-            <Badge className="border-r" variant={color}>
-              {status || "100%"}
-            </Badge>
-          </div>
-        </div>
-      </div>
-      <ProductDescription desc={desc}/>
+        <ProductDescription desc={desc} />
       </>
     );
   }
