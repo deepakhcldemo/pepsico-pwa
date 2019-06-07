@@ -47,6 +47,21 @@ class Catalog extends Component {
     currentItemTitle: "",
     currentPageItems: []
   };
+  resize = () => {
+    let width = window.innerWidth;
+    if (width <= 767) {
+      this.setState({ numItemsPerPage: 8 });
+    } else if (width > 767 && width < 1024) {
+      this.setState({ numItemsPerPage: 9 });
+    } else {
+      this.setState({ numItemsPerPage: 8 });
+    }
+    this.initData(this.state.filterBy, this.state.currentPageNumber);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resize);
+  }
   itemClick = item => {
     this.setState({ currentItemTitle: item.title });
     if (this.state.filterBy === "shelf") {
@@ -62,16 +77,20 @@ class Catalog extends Component {
     return array.slice(page_number * page_size, (page_number + 1) * page_size);
   };
 
-  initData = async filterby => {
+  initData = async (filterby, currentPageNumber) => {
     let listItem = filterby === "shelf" ? itemList : categoryList;
-    this.setState({ currentPageNumber: 1 });
+    this.setState({ currentPageNumber: currentPageNumber });
     this.setState({
       totalItems: listItem
     });
     let totalPages = Math.ceil(listItem.length / this.state.numItemsPerPage);
     this.setState({ totalPages: totalPages });
     await this.setState({
-      currentPageItems: this.paginate(listItem, this.state.numItemsPerPage, 1)
+      currentPageItems: this.paginate(
+        listItem,
+        this.state.numItemsPerPage,
+        currentPageNumber
+      )
     });
     this.setState({ currentItemTitle: "" });
   };
@@ -384,7 +403,8 @@ class Catalog extends Component {
         }
       }
     ];
-    this.initData("floor");
+    this.resize();
+    window.addEventListener("resize", this.resize);
   };
 
   onSelectPagination = number => {
@@ -411,7 +431,7 @@ class Catalog extends Component {
         onSelect={(index, label) => {
           this.setState({ filterBy: index });
           console.log(index, " : ", label + " selected");
-          this.initData(index);
+          this.initData(index, 1);
         }}
       >
         <Tab eventKey="floor" title="FLOOR">
