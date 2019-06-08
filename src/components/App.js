@@ -11,21 +11,37 @@ import {
   CardBox,
   LeftNavigation
 } from "../components";
-import Footer from './pages/footer'
+import Footer from "./pages/footer";
 import theme from "./themes/default";
 const links = [
-  {icon: 'fa fa-adjust', name: 'OCCUPANCY'},
-  {icon: 'fa fa-heart', name: 'HEALTY'},
-  {icon: 'fa fa-adjust', name: 'TASTY'},
-  {icon: 'fa fa-star', name: 'FAVORITE'},
-  {icon: 'fa fa-asterisk', name: 'ALL'}
-  ]
+  { icon: "fa fa-adjust", name: "OCCUPANCY" },
+  { icon: "fa fa-heart", name: "HEALTY" },
+  { icon: "fa fa-adjust", name: "TASTY" },
+  { icon: "fa fa-star", name: "FAVORITE" },
+  { icon: "fa fa-asterisk", name: "ALL" }
+];
 class App extends Component {
   state = {
     collapsedStatus: true
   };
   onLeftNavCollapse = () => {
     this.setState({ collapsedStatus: !this.state.collapsedStatus });
+  };
+  componentDidMount = () => {
+    window.addEventListener("click", event => {
+      var box = document.getElementById("hc-leftNavigation");
+      var toggelBtn = document.getElementById("hc-toggelButton");
+      if (
+        event.target != box &&
+        event.target.parentNode != box &&
+        !box.contains(event.target.parentNode) &&
+        event.target != toggelBtn &&
+        event.target.parentNode != toggelBtn &&
+        !this.state.collapsedStatus
+      ) {
+        this.setState({ collapsedStatus: true });
+      }
+    });
   };
   render() {
     return (
@@ -37,7 +53,7 @@ class App extends Component {
               collapsedStatus={this.state.collapsedStatus}
             />
           }
-          footer={<Footer links={links}/>}
+          footer={<Footer links={links} />}
           leftNavigation={
             <LeftNavigation
               collapsedStatus={this.state.collapsedStatus}

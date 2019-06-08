@@ -29,6 +29,7 @@ const Icon = styled.i`
   position: relative;
   right: 5vw;
 `;
+
 class Header extends Component {
   render() {
     const { ...props } = this.props;
@@ -63,6 +64,7 @@ class Header extends Component {
           </Media>
         </Navbar.Brand>
         <ToggleButton
+          id="hc-toggelButton"
           aria-controls="basic-navbar-nav"
           collapsed={props.collapsedStatus}
           onClick={() => {
@@ -92,7 +94,7 @@ class Header extends Component {
           </Form>
         </Navbar.Collapse> */}
         <TopNavigation>SMART SHELF </TopNavigation>
-        <Icon className="fa fa-search"></Icon>
+        <Icon className="fa fa-search" />
         <Avatar navOptions={LINKS} />
       </NavBarWrapper>
     );
