@@ -7,7 +7,7 @@
     "classnames": "^2.2.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "font-awesome": "^4.7.0",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
@@ -48,7 +48,7 @@
     "@storybook/addon-actions": "^5.0.11",
     "@storybook/addon-links": "^5.0.11",
     "@storybook/addons": "^5.0.11",
-    "@storybook/react": "^5.0.11",
+    "@storybook/react": "^7.0.7",
     "storybook-addon-jsx": "^7.1.2"
   }
 }
